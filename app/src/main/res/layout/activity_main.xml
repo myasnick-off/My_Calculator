@@ -1,18 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/geometry"
+    android:padding="8dp"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <GridLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_gravity="bottom"
+        android:columnCount="4">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/cancel"
+            style="@style/green_button_style"
+            android:layout_marginEnd="4dp"
+            android:text="@string/cancel" />
+
+        <Button
+            android:id="@+id/sqrt"
+            style="@style/green_button_style"
+            android:layout_marginEnd="4dp"
+            android:text="@string/sqrt" />
+
+        <Button
+            android:id="@+id/signe"
+            style="@style/green_button_style"
+            android:layout_marginEnd="4dp"
+            android:text="@string/signe" />
+
+        <Button
+            android:id="@+id/divide"
+            style="@style/green_button_style"
+            android:text="@string/divide" />
+
+        <Button
+            android:id="@+id/seven"
+            style="@style/black_button_style"
+            android:text="@string/seven" />
+
+        <Button
+            android:id="@+id/eight"
+            style="@style/black_button_style"
+            android:text="@string/eight" />
+
+        <Button
+            android:id="@+id/nine"
+            style="@style/black_button_style"
+            android:text="@string/nine" />
+
+        <Button
+            android:id="@+id/multiply"
+            style="@style/green_button_style"
+            android:text="@string/multiply" />
+
+        <Button
+            android:id="@+id/four"
+            style="@style/black_button_style"
+            android:text="@string/four" />
+
+        <Button
+            android:id="@+id/five"
+            style="@style/black_button_style"
+            android:text="@string/five" />
+
+        <Button
+            android:id="@+id/six"
+            style="@style/black_button_style"
+            android:text="@string/six" />
+
+        <Button
+            android:id="@+id/minus"
+            style="@style/green_button_style"
+            android:text="@string/minus" />
+
+        <Button
+            android:id="@+id/one"
+            style="@style/black_button_style"
+            android:text="@string/one" />
+
+        <Button
+            android:id="@+id/two"
+            style="@style/black_button_style"
+            android:text="@string/two" />
+
+        <Button
+            android:id="@+id/three"
+            style="@style/black_button_style"
+            android:text="@string/three" />
+
+        <Button
+            android:id="@+id/plus"
+            style="@style/green_button_style"
+            android:text="@string/plus" />
+
+        <Button
+            android:id="@+id/zero"
+            style="@style/black_button_style"
+            android:layout_columnSpan="2"
+            android:text="@string/zero" />
+
+        <Button
+            android:id="@+id/dot"
+            style="@style/black_button_style"
+            android:text="@string/dot" />
+
+        <Button
+            android:id="@+id/result"
+            style="@style/green_button_style"
+            android:text="@string/result" />
+
+    </GridLayout>
+
+</FrameLayout>
