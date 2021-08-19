@@ -11,4 +11,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
+
+    /*
+      Для отрисовки клавиатуры калькулятора был выбран GridLayout, так как этот лейаут, в сочетании с FrameLayout,
+      наиболее оптимально подходит для реализации данной задачи. В итоге получаем лаконичный и читабельный код
+      разметки и не теряем в производительности.
+     */
 }
