@@ -14,7 +14,7 @@
         android:background="@color/white"
         android:gravity="end"
         android:text="@string/zero"
-        android:textSize="48sp"
+        android:textSize="32sp"
         tools:text="0123456789" />
 
     <GridLayout
@@ -25,101 +25,101 @@
 
         <Button
             android:id="@+id/btn_cancel"
-            style="@style/Button.green"
+            style="@style/Button.green.land"
             android:layout_marginEnd="4dp"
             android:text="@string/cancel" />
 
         <Button
             android:id="@+id/btn_sqrt"
-            style="@style/Button.green"
+            style="@style/Button.green.land"
             android:layout_marginEnd="4dp"
             android:text="@string/sqrt" />
 
         <Button
             android:id="@+id/btn_sign"
-            style="@style/Button.green"
+            style="@style/Button.green.land"
             android:layout_marginEnd="4dp"
             android:text="@string/signe" />
 
         <Button
             android:id="@+id/btn_divide"
-            style="@style/Button.green"
+            style="@style/Button.green.land"
             android:text="@string/divide" />
 
         <Button
             android:id="@+id/btn_seven"
-            style="@style/Button.black"
+            style="@style/Button.black.land"
             android:text="@string/seven" />
 
         <Button
             android:id="@+id/btn_eight"
-            style="@style/Button.black"
+            style="@style/Button.black.land"
             android:text="@string/eight" />
 
         <Button
             android:id="@+id/btn_nine"
-            style="@style/Button.black"
+            style="@style/Button.black.land"
             android:text="@string/nine" />
 
         <Button
             android:id="@+id/btn_multiply"
-            style="@style/Button.green"
+            style="@style/Button.green.land"
             android:text="@string/multiply" />
 
         <Button
             android:id="@+id/btn_four"
-            style="@style/Button.black"
+            style="@style/Button.black.land"
             android:text="@string/four" />
 
         <Button
             android:id="@+id/btn_five"
-            style="@style/Button.black"
+            style="@style/Button.black.land"
             android:text="@string/five" />
 
         <Button
             android:id="@+id/btn_six"
-            style="@style/Button.black"
+            style="@style/Button.black.land"
             android:text="@string/six" />
 
         <Button
             android:id="@+id/btn_minus"
-            style="@style/Button.green"
+            style="@style/Button.green.land"
             android:text="@string/minus" />
 
         <Button
             android:id="@+id/btn_one"
-            style="@style/Button.black"
+            style="@style/Button.black.land"
             android:text="@string/one" />
 
         <Button
             android:id="@+id/btn_two"
-            style="@style/Button.black"
+            style="@style/Button.black.land"
             android:text="@string/two" />
 
         <Button
             android:id="@+id/btn_three"
-            style="@style/Button.black"
+            style="@style/Button.black.land"
             android:text="@string/three" />
 
         <Button
             android:id="@+id/btn_plus"
-            style="@style/Button.green"
+            style="@style/Button.green.land"
             android:text="@string/plus" />
 
         <Button
             android:id="@+id/btn_zero"
-            style="@style/Button.black"
+            style="@style/Button.black.land"
             android:layout_columnSpan="2"
             android:text="@string/zero" />
 
         <Button
             android:id="@+id/btn_dot"
-            style="@style/Button.black"
+            style="@style/Button.black.land"
             android:text="@string/dot" />
 
         <Button
             android:id="@+id/btn_result"
-            style="@style/Button.green"
+            style="@style/Button.green.land"
             android:text="@string/result" />
 
     </GridLayout>
