@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/geometry"
-    android:padding="8dp"
-    tools:context=".MainActivity">
+    android:padding="@dimen/layout_padding"
+    tools:context=".ui.MainActivity">
 
-    <TextView
-        android:id="@+id/display_textView"
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/display_text_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
         android:gravity="end"
         android:text="@string/zero"
-        android:textSize="48sp"
+        android:textSize="@dimen/display_size"
         tools:text="0123456789" />
 
     <GridLayout
@@ -23,103 +24,103 @@
         android:layout_gravity="bottom"
         android:columnCount="4">
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_cancel"
-            style="@style/Button.green"
-            android:layout_marginEnd="4dp"
+            style="@style/Button.Green"
+            android:layout_marginEnd="@dimen/button_margin_end"
             android:text="@string/cancel" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_sqrt"
-            style="@style/Button.green"
-            android:layout_marginEnd="4dp"
+            style="@style/Button.Green"
+            android:layout_marginEnd="@dimen/button_margin_end"
             android:text="@string/sqrt" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_sign"
-            style="@style/Button.green"
-            android:layout_marginEnd="4dp"
+            style="@style/Button.Green"
+            android:layout_marginEnd="@dimen/button_margin_end"
             android:text="@string/signe" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_divide"
-            style="@style/Button.green"
+            style="@style/Button.Green"
             android:text="@string/divide" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_seven"
-            style="@style/Button.black"
+            style="@style/Button.Black"
             android:text="@string/seven" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_eight"
-            style="@style/Button.black"
+            style="@style/Button.Black"
             android:text="@string/eight" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_nine"
-            style="@style/Button.black"
+            style="@style/Button.Black"
             android:text="@string/nine" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_multiply"
-            style="@style/Button.green"
+            style="@style/Button.Green"
             android:text="@string/multiply" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_four"
-            style="@style/Button.black"
+            style="@style/Button.Black"
             android:text="@string/four" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_five"
-            style="@style/Button.black"
+            style="@style/Button.Black"
             android:text="@string/five" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_six"
-            style="@style/Button.black"
+            style="@style/Button.Black"
             android:text="@string/six" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_minus"
-            style="@style/Button.green"
+            style="@style/Button.Green"
             android:text="@string/minus" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_one"
-            style="@style/Button.black"
+            style="@style/Button.Black"
             android:text="@string/one" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_two"
-            style="@style/Button.black"
+            style="@style/Button.Black"
             android:text="@string/two" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_three"
-            style="@style/Button.black"
+            style="@style/Button.Black"
             android:text="@string/three" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_plus"
-            style="@style/Button.green"
+            style="@style/Button.Green"
             android:text="@string/plus" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_zero"
-            style="@style/Button.black"
+            style="@style/Button.Black"
             android:layout_columnSpan="2"
             android:text="@string/zero" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_dot"
-            style="@style/Button.black"
+            style="@style/Button.Black"
             android:text="@string/dot" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_result"
-            style="@style/Button.green"
+            style="@style/Button.Green"
             android:text="@string/result" />
 
     </GridLayout>
