@@ -1,9 +1,11 @@
-package com.example.mycalculator;
+package com.example.mycalculator.domain;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Calculator implements Parcelable {
+public class Calculator implements Calculation, Parcelable {
+
+    public static final int SCALE = 10;
 
     private double currentVal;          // текущее вводимое значение
     private double firstVal;            // первое введенное значение
@@ -13,11 +15,9 @@ public class Calculator implements Parcelable {
     private boolean inProgress;         // флаг указывающий, что вычисление в процессе
     private boolean isCalculated;       // флаг указывающий, что текущее вычисление произведено
     private int order;                  // текущий порядок дробной части числа
-    private View view;                  // переменная типа View, куда передается сама MainActivity
     private Operations operation;       // объект enum Operations
 
-    public Calculator(View view) {
-        this.view = view;
+    public Calculator() {
         this.currentVal = 0;
         this.order = 1;
         this.hasDot = false;
@@ -49,15 +49,12 @@ public class Calculator implements Parcelable {
         }
     };
 
-    // Метод, возвращающий текущее значение в виде строки для вывода на экран
-    public String getCurrentValString() {
-        if (inProgress) return valToString(result); // если  новое значение еще не начали воодить, то возвращаем последний результат
-        return valToString(currentVal);             // иначе возвращаем текущее значение
-    }
-
-    // Сеттер для view
-    public void setView(View view) {
-        this.view = view;
+    // Метод, возвращающий текущее значение
+    public double getCurrentVal() {
+        if (inProgress) {              // если новое значение еще не начали вводить,
+            return result;             // то возвращаем последний результат
+        }
+        return currentVal;             // иначе возвращаем текущее значение
     }
 
     // Метод, устанавливающий дробную точку
@@ -66,26 +63,29 @@ public class Calculator implements Parcelable {
     }
 
     // Метод, устанавливающий знак вводимого значения
-    public void setSign() {
+    public double setSign() {
         currentVal *= -1;
-        view.displayInput(valToString(currentVal));
+        return currentVal;
     }
 
     // Метод вычисления квадратного корня
-    public void sqrt() {
+    public double sqrt() {
         selectOperation(Operations.SQRT);       // выбираем соотвествующую операцию из enum
-        calculate();                            // запускаем вычисление
+        return calculate();                     // запускаем вычисление
     }
 
     // Метод создания текущего значения
-    public void createVal(int digit) {
-        if (isCalculated) cancel();                             // если последнее вычисление завершено, вызываем сброс
-        if (hasDot) {                                           // если установлена дробная точка,
-            currentVal += (double) digit / Math.pow(10, order); // добавляем цифру в дробную часть в соответсвующий разряд
-            order++;                                            // инкрементируем текущий разряд
-        } else                                                  // если число целое,
-            currentVal = currentVal * 10 + digit;               // добавляем новую цифру в младший разряд
-        view.displayInput(valToString(currentVal));             // выводим текущее значение на экран
+    public double createVal(int digit) {
+        if (isCalculated) {                                         // если последнее вычисление завершено,
+            cancel();                                               // вызываем сброс
+        }
+        if (hasDot) {                                               // если установлена дробная точка,
+            currentVal += (double) digit / Math.pow(SCALE, order);  // добавляем цифру в дробную часть в соответсвующий разряд
+            order++;                                                // инкрементируем текущий разряд
+        } else {                                                    // если число целое,
+            currentVal = currentVal * SCALE + digit;                // добавляем новую цифру в младший разряд
+        }
+        return currentVal;
     }
 
     // Метод выбора арифметической операции
@@ -96,7 +96,7 @@ public class Calculator implements Parcelable {
     }
 
     // Метод проведения вычисления в соответсие с выбранной операцией
-    public void calculate() {
+    public double calculate() {
         secondVal = currentVal;
         if (!inProgress) result = firstVal;
         switch (operation) {
@@ -113,13 +113,16 @@ public class Calculator implements Parcelable {
                 result /= secondVal;
                 break;
             case SQRT:
-                if (result >= 0) result = Math.pow(result, 0.5);
-                else result = 0;
+                if (result >= 0) {
+                    result = Math.pow(result, 0.5);
+                } else {
+                    result = 0;
+                }
                 break;
         }
         inProgress = true;
         isCalculated = true;
-        view.displayInput(valToString(result));
+        return result;
     }
 
     // метод выполнения полного сброса
@@ -128,7 +131,6 @@ public class Calculator implements Parcelable {
         firstVal = 0;
         result = 0;
         inProgress = false;
-        view.displayInput(valToString(currentVal));
     }
 
     // метод очистки ввода текущего значения
@@ -137,12 +139,6 @@ public class Calculator implements Parcelable {
         hasDot = false;
         order = 1;
         isCalculated = false;
-    }
-
-    // Метод преобразования передаваемого числа в строку
-    public String valToString(double value) {
-        if ((value * 10) % 10 > 0) return String.valueOf(value);
-        return String.valueOf((int) value);
     }
 
     @Override
@@ -160,11 +156,5 @@ public class Calculator implements Parcelable {
         dest.writeByte((byte) (inProgress ? 1 : 0));
         dest.writeByte((byte) (isCalculated ? 1 : 0));
         dest.writeInt(order);
-    }
-
-    // Внутренний интерфейс, который будет реализовывать MainActivity
-    // для передачи полномочий вывода данных на экран объекту класса Calculator
-    public interface View {
-        void displayInput(String value);
     }
 }
