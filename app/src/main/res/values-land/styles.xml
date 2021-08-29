@@ -2,15 +2,13 @@
 <resources>
 
     <style name="Button" parent="Widget.MaterialComponents.Button">
-        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_height">40dp</item>
         <item name="android:layout_columnWeight">1</item>
         <item name="android:textSize">24sp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
         <item name="android:fontFamily">@font/baksheesh</item>
         <item name="cornerRadius">20dp</item>
-    </style>
-
-    <style name="Button.Green">
-        <item name="android:backgroundTint">@color/teal_400</item>
     </style>
 
     <style name="Button.Black">

@@ -6,8 +6,8 @@ import com.example.mycalculator.domain.Operations;
 /* Класс-презентер для калькулятора */
 public class MainPresenter {
 
-    MainView view;              // переменная типа MainView, куда передается сама MainActivity
-    Calculation calculator;     // переменная типа Калькулятор
+    private MainView view;              // переменная типа MainView, куда передается сама MainActivity
+    private Calculation calculator;     // переменная типа Калькулятор
 
     public MainPresenter(MainView view, Calculation calculator) {
         this.view = view;
