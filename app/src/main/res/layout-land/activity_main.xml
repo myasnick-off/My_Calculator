@@ -21,29 +21,30 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
+        android:useDefaultMargins="true"
         android:columnCount="4">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_cancel"
-            style="@style/Button.Green"
+            style="@style/Button"
             android:layout_marginEnd="@dimen/button_margin_end"
             android:text="@string/cancel" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_sqrt"
-            style="@style/Button.Green"
+            style="@style/Button"
             android:layout_marginEnd="@dimen/button_margin_end"
             android:text="@string/sqrt" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_sign"
-            style="@style/Button.Green"
+            style="@style/Button"
             android:layout_marginEnd="@dimen/button_margin_end"
             android:text="@string/signe" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_divide"
-            style="@style/Button.Green"
+            style="@style/Button"
             android:text="@string/divide" />
 
         <com.google.android.material.button.MaterialButton
@@ -63,7 +64,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_multiply"
-            style="@style/Button.Green"
+            style="@style/Button"
             android:text="@string/multiply" />
 
         <com.google.android.material.button.MaterialButton
@@ -83,7 +84,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_minus"
-            style="@style/Button.Green"
+            style="@style/Button"
             android:text="@string/minus" />
 
         <com.google.android.material.button.MaterialButton
@@ -103,7 +104,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_plus"
-            style="@style/Button.Green"
+            style="@style/Button"
             android:text="@string/plus" />
 
         <com.google.android.material.button.MaterialButton
@@ -119,7 +120,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_result"
-            style="@style/Button.Green"
+            style="@style/Button"
             android:text="@string/result" />
 
     </GridLayout>

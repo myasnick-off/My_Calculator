@@ -1,9 +1,18 @@
 package com.example.mycalculator.ui;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.example.mycalculator.R;
@@ -13,22 +22,67 @@ import com.example.mycalculator.domain.Operations;
 public class MainActivity extends AppCompatActivity implements MainView {
 
     private static final String KEY_CALCULATOR_VALUE = "CALCULATOR_VALUE";
+    private static final String KEY_THEME_VAL = "KEY_THEME";
+    private static final int DEFAULT_THEME = 0;
 
     private Calculator calculator;
     private MainPresenter presenter;
     private TextView displayTextView;
+    private int themeIndex;
+
+    private final ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    if (result.getResultCode() == Activity.RESULT_OK) {
+                        themeIndex = result.getData().getIntExtra(SettingsActivity.KEY_THEME, DEFAULT_THEME);
+                        recreate();
+                    }
+                }
+            });
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
         if (savedInstanceState == null) {                                        // если запуск впервые,
             calculator = new Calculator();                                       // создаем новый калькулятор
         } else {                                                                 // если перезапуск
             calculator = savedInstanceState.getParcelable(KEY_CALCULATOR_VALUE); // загружаем сохраненный калькулятор
+            themeIndex = savedInstanceState.getInt(KEY_THEME_VAL);
         }
+        // Установка темы приложения в зависимости от выбранных настроек
+        switch (themeIndex) {
+            case 0:
+                setTheme(R.style.Theme_MyCalculator);
+                break;
+            case 1:
+                setTheme(R.style.Theme_OrangeCalculator);
+                break;
+            case 2:
+                setTheme(R.style.Theme_PurpleCalculator);
+                break;
+        }
+        setContentView(R.layout.activity_main);
         init();                                                                  // запускаем метод инициализации
         buttonsHandler();                                                        // запускаем метод-обработчик кнопок
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_actions, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    // Метод обработки нажатия элементов Action Bar
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.settings_item) {
+            openSettingsActivity();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     /* Метод инициализации */
@@ -61,10 +115,18 @@ public class MainActivity extends AppCompatActivity implements MainView {
         findViewById(R.id.btn_result).setOnClickListener(v -> presenter.onResultKeyPressed());
     }
 
+    // Метод запуска активити с настройками
+    private void openSettingsActivity() {
+        Intent settingsIntent = new Intent(MainActivity.this, SettingsActivity.class);
+        settingsIntent.putExtra(SettingsActivity.KEY_THEME, themeIndex);
+        activityResultLauncher.launch(settingsIntent);
+    }
+
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putParcelable(KEY_CALCULATOR_VALUE, calculator);
+        outState.putInt(KEY_THEME_VAL, themeIndex);
     }
 
     // Переопределяем метод интерфейса MainView, который реализует MainActivity
